@@ -13,6 +13,9 @@
 //#include "highgui.h"
 #include "ofMain.h"
 
+#include <float.h>
+#include <limits.h>
+
 #define BUF_SIZE 256
 
 class pnm_error { };

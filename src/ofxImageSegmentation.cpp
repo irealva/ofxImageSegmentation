@@ -5,6 +5,9 @@
 #include "pnmfile.h"
 #include "segment-image.h"
 
+#include <float.h>
+#include <limits.h>
+
 //--------------------------------------------------------------
 ofxImageSegmentation::ofxImageSegmentation(){
 	sigma = 0.5;

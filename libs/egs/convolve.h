@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <cmath>
 #include "image.h"
+#include <climits>
 
 /* convolve src with mask.  dst is flipped! */
 static void convolve_even(image11<float> *src, image11<float> *dst, 
@@ -18,8 +19,8 @@ static void convolve_even(image11<float> *src, image11<float> *dst,
       float sum = mask[0] * imRef(src, x, y);
       for (int i = 1; i < len; i++) {
 	sum += mask[i] * 
-	  (imRef(src, __max(x-i,0), y) + 
-	   imRef(src, __min(x+i, width-1), y));
+	  (imRef(src, MAX(x-i,0), y) +
+	   imRef(src, MIN(x+i, width-1), y));
       }
       imRef(dst, y, x) = sum;
     }
@@ -38,8 +39,8 @@ static void convolve_odd(image11<float> *src, image11<float> *dst,
       float sum = mask[0] * imRef(src, x, y);
       for (int i = 1; i < len; i++) {
 	sum += mask[i] * 
-	  (imRef(src, __max(x-i,0), y) - 
-	   imRef(src, __min(x+i, width-1), y));
+	  (imRef(src, MAX(x-i,0), y) -
+	   imRef(src, MIN(x+i, width-1), y));
       }
       imRef(dst, y, x) = sum;
     }

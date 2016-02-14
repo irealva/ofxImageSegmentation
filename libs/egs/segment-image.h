@@ -7,6 +7,9 @@
 #include "filter.h"
 #include "segment-graph.h"
 
+#include <float.h>
+#include <limits.h>
+
 // random color
 rgb random_rgb(){ 
   rgb c;
